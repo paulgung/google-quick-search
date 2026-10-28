@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Google Quick Search — Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <div class="brand">
+        <img src="icons/icon48.png" width="36" height="36" alt="">
+        <div>
+          <h1>Google Quick Search</h1>
+          <p>Select any word, then press a shortcut.</p>
+        </div>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="enabled">
+        <span>Enabled</span>
+      </label>
+    </header>
+
+    <section class="card" aria-labelledby="shortcuts-title">
+      <h2 id="shortcuts-title">Shortcuts</h2>
+      <p class="hint">
+        Click a shortcut, then press the key combination. Press <kbd>Esc</kbd> to cancel or
+        <kbd>Backspace</kbd> to clear it. Changes save automatically.
+      </p>
+
+      <ul class="shortcuts">
+        <li class="shortcut-row">
+          <div class="shortcut-info">
+            <span class="shortcut-name">Search Google</span>
+            <span class="shortcut-desc">Open the selected text in a new Google results tab.</span>
+          </div>
+          <button type="button" class="recorder" data-recorder="search"></button>
+        </li>
+        <li class="shortcut-row">
+          <div class="shortcut-info">
+            <span class="shortcut-name">Ask Gemini</span>
+            <span class="shortcut-desc">Open Gemini in a new tab with the selection filled in as your prompt.</span>
+          </div>
+          <button type="button" class="recorder" data-recorder="askGemini"></button>
+        </li>
+      </ul>
+
+      <p class="error" id="error" role="alert" hidden></p>
+
+      <div class="card-footer">
+        <button type="button" class="button" id="reset">Reset to defaults</button>
+        <span class="status" id="status" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <section class="notes">
+      <h2>Good to know</h2>
+      <ul>
+        <li>Shortcuts only fire while text is selected on a page. They never fire in inputs, textareas, or editable content.</li>
+        <li>Ask Gemini opens Gemini with the selection pre-filled as your prompt. You may need to press Enter or click Send.</li>
+        <li>Shortcuts can't run on <code>chrome://</code> pages, the Chrome Web Store, or PDF viewers.</li>
+        <li>Click the toolbar icon any time to open this page.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="settings.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
