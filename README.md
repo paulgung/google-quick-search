@@ -1,7 +1,7 @@
 # Google Quick Search
 
 A Chrome (Manifest V3) extension that acts on the text you select. Highlight any word or
-phrase on a page, then press a shortcut:
+phrase on a page or in a text field, then press a shortcut:
 
 - **S** — search the selection on Google in a new tab.
 - **A** — open Gemini in a new tab with the selection filled in as your prompt.
@@ -19,11 +19,8 @@ Click the toolbar icon to open the settings page.
 
 ## Usage
 
-Select page text, then press the shortcut. Shortcuts only fire when:
-
-- text is selected, and
-- the selection and focus are on regular page content (not inside inputs, textareas,
-  selects, or editable content).
+Select text, then press the shortcut. Shortcuts fire whenever text is selected — on the
+page or inside inputs, textareas, and editable fields.
 
 They do not run on `chrome://` pages, the Chrome Web Store, or in PDF viewers. For Ask
 Gemini, you may need to press Enter or click Send in Gemini after the prompt is filled in.

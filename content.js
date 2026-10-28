@@ -25,9 +25,8 @@
 
   function onKeyDown(event) {
     if (!settings.enabled || event.defaultPrevented || event.repeat || event.isComposing) return;
-    if (isEditableElement(event.target) || isEditableElement(document.activeElement)) return;
 
-    const text = getSelectedPageText();
+    const text = getSelectedText();
     if (!text) return;
 
     for (const action of ACTIONS) {
@@ -39,24 +38,19 @@
     }
   }
 
-  function isEditableElement(element) {
-    if (!(element instanceof Element)) return false;
-    if (element.isContentEditable || element.matches('input, textarea, select')) return true;
-    const editableAncestor = element.closest('[contenteditable]');
-    return Boolean(editableAncestor?.isContentEditable);
-  }
+  function getSelectedText() {
+    const active = document.activeElement;
+    if (active instanceof HTMLInputElement || active instanceof HTMLTextAreaElement) {
+      const { selectionStart, selectionEnd, value } = active;
+      if (typeof selectionStart === 'number' && typeof selectionEnd === 'number' && selectionEnd > selectionStart) {
+        return value.slice(selectionStart, selectionEnd).trim();
+      }
+      return '';
+    }
 
-  function getSelectedPageText() {
-    if (document.designMode === 'on') return '';
     const selection = window.getSelection();
     if (!selection || selection.rangeCount === 0 || selection.isCollapsed) return '';
-    if (isEditableNode(selection.anchorNode) || isEditableNode(selection.focusNode)) return '';
     return selection.toString().trim();
-  }
-
-  function isEditableNode(node) {
-    const element = node?.nodeType === Node.ELEMENT_NODE ? node : node?.parentElement;
-    return element ? isEditableElement(element) : false;
   }
 
   function send(message) {
