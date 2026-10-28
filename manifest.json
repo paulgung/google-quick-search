@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Google Quick Search",
   "version": "1.0.0",
-  "description": "Select any word, then press S to search Google or A to ask Gemini. You can change the shortcuts in Settings.",
+  "description": "Select any word, then press S to search Google or A to ask Gemini. You can change the shortcuts in Extension options.",
   "minimum_chrome_version": "102",
   "permissions": ["storage"],
   "background": {
